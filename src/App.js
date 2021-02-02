@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './components/Header';
+import Formulario from './components/Formulario';
+import ListadoRecetas from './components/ListaRecetas';
+
+
+//context
+import CategoriasProvider from './context/CategoriaContect';
+//context de Recetas
+import RecetasProvider from './context/RecetasContext';
+//ModalContext
+import ModalProvider from './context/ModalContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <CategoriasProvider>
+          <ModalProvider>
+            <RecetasProvider>
+
+              <Header mensaje='Busca Recetas de Bebidas'/>
+            
+              <div className="container mt-5">
+                <div className="row">
+                    <Formulario />
+                </div>
+
+               <ListadoRecetas />
+          </div>
+          
+          </RecetasProvider>
+         </ModalProvider>
+        </CategoriasProvider>
+     
+      
   );
 }
 
